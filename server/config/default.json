@@ -1,0 +1,12 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "mongodb": "mongodb://localhost:27017/mongotest",
+  "public": "../public/",
+  "auth": {
+    "token": {
+      "secret": "bW6KjQT+B9JzSpFiqvMFA5OfQY+So0RtTJJq/ZwWypDO8iLk2RjfMdaYinEe30+JK7P0JVM+cJ6zOlZKsYp6+g=="
+    },
+    "local": {}
+  }
+}
