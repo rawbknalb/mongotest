@@ -1,7 +1,7 @@
 <template>
   <div class="app" id="app" v-md-theme="'default'">
     <img src="./assets/logo.png">
-    <navigation :loggedIn="loggedIn"></navigation>
+    <navigation></navigation>
     <router-view></router-view>
   </div>
 </template>

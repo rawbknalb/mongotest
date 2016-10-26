@@ -1,29 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 // import _ from 'lodash'
+import components from './modules/components'
+import auth from './modules/auth'
 
 Vue.use(Vuex)
 
-const state = {
-  components: [],
-  loggedIn: false
-}
-
-const mutations = {
-  FETCH_COMPONENTS (state, components) {
-    state.components = components
-  },
-
-  ADD_COMPONENT (state, component) {
-    state.components.push(component)
-  },
-
-  CHECK_AUTHSTATE (state, loggedIn) {
-    state.loggedIn = loggedIn
-  }
-}
+const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
-  state,
-  mutations
+  modules: {
+    components,
+    auth
+  },
+  strict: debug
 })

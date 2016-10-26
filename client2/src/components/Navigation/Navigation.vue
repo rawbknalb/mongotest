@@ -2,39 +2,44 @@
   <div class="">
     <h1 class="header">I'm a vue.js component</h1>
 
-    <router-link v-if="loggedIn" to="/logout">
-      <div class="column">Log out</div>
+    <router-link v-if="isLoggedIn" to="/logout">
+      <!-- click on Log out triggers isLoggedIn = fale in store  -->
+      <div @click="logoutUser" class="column">Log out</div>
     </router-link>
 
-    <router-link v-if="!loggedIn" to="/login">
+    <router-link v-if="!isLoggedIn" to="/login">
       <div class="column">Login</div>
     </router-link>
 
-    <router-link v-if="!loggedIn" to="/signup">
+    <router-link v-if="!isLoggedIn" to="/signup">
       <div class="column">Signup</div>
     </router-link>
 
-    <router-link v-if="loggedIn" to="/posts">
+    <router-link v-if="isLoggedIn" to="/posts">
       <div class="column">Posts</div>
     </router-link>
 
-    <router-link v-if="loggedIn" to="/post">
+    <router-link v-if="isLoggedIn" to="/post">
       <div class="column">Add Post</div>
     </router-link>
 
-    <router-link v-if="loggedIn" to="/sampledata">
+    <router-link v-if="isLoggedIn" to="/sampledata">
       <div class="column">Create Random Post</div>
     </router-link>
   </div>
 </template>
 
 <script>
-// import * as services from '../../services'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Navigation',
-  props: ['loggedIn'],
-  methods: {}
+  computed: mapGetters({
+    isLoggedIn: 'getAuthState'
+  }),
+  methods: {
+    ...mapActions(['logoutUser'])
+  }
 }
 </script>
 

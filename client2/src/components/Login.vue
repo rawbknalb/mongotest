@@ -22,8 +22,7 @@
 
 <script>
 import * as services from '../services'
-import { getAuthState } from '../vuex/getters'
-import { checkAuthState } from '../vuex/actions'
+import { mapGetters, mapActions } from 'vuex'
 
 const initialLoginData = () => {
   return {
@@ -32,31 +31,33 @@ const initialLoginData = () => {
       password: null,
       test: false
     },
-    error: false
+    error: false,
+    login: true
   }
 }
 
 export default {
   name: 'Login',
   props: [],
-
-  vuex: {
-    getters: {
-      authState: getAuthState
-    },
-    actions: {
-      checkAuthState
-    }
-  },
+  computed: mapGetters({
+    components: 'fetchComponents',
+    isLoggedIn: 'getAuthState'
+  }),
   data: initialLoginData,
   methods: {
+    ...mapActions(['loginUser']),
     login () {
       services.app.authenticate({
         type: 'local',
         'email': this.loginForm.email,
         'password': this.loginForm.password
-      }).then(this.redirectAfterLogin).catch(this.loginError)
-      this.checkAuthState()
+      })
+      // set store state loggedIn = true
+      .then(this.loginUser)
+      // redirect to root
+      .then(this.redirectAfterLogin)
+      // catch errors and use loginError method
+      .catch(this.loginError)
     },
     redirectAfterLogin () {
       this.$router.replace(this.$route.query.redirect || '/')
