@@ -9,19 +9,7 @@ import store from './vuex/store'
 Vue.use(Vuex)
 
 // Material Design
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.css'
-Vue.use(VueMaterial)
-Vue.material.theme.registerAll({
-  default: {
-    primary: 'cyan',
-    accent: 'pink'
-  },
-  phone: {
-    primary: 'indigo',
-    accent: 'pink'
-  }
-})
+import './assets/VueMaterialThemes'
 
 /* eslint-disable no-new */
 new Vue({

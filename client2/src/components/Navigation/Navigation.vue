@@ -1,7 +1,7 @@
 <template>
 
   <div class="">
-    <md-toolbar>
+    <md-toolbar v-md-theme="'orange'">
       <md-button class="md-icon-button">
         <md-icon>menu</md-icon>
       </md-button>
@@ -10,6 +10,10 @@
 
       <router-link v-if="!isLoggedIn" to="/login">
         <md-button>Login</md-button>
+      </router-link>
+
+      <router-link to="/">
+        <md-button class="Default">Home</md-button>
       </router-link>
 
       <router-link v-if="isLoggedIn" to="/logout">

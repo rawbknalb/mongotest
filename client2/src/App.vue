@@ -1,5 +1,5 @@
 <template>
-  <div class="app" id="app" v-md-theme="'default'">
+  <div class="app" id="app" v-md-theme="'orange'">
     <navigation></navigation>
     <router-view></router-view>
   </div>
@@ -17,7 +17,17 @@ export default {
   },
   data () {
     return {
-      loggedIn: !!window.localStorage.getItem('feathers-jwt')
+      themes: {
+        orange: {
+          title: 'Orange',
+          theme: 'orange'
+        },
+        purple: {
+          title: 'Purple',
+          theme: 'purple'
+        }
+      },
+      choose: ''
     }
   }
 }
