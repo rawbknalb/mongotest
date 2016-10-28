@@ -1,5 +1,5 @@
 <template>
-  <div class="app" id="app" v-md-theme="'orange'">
+  <div class="app" id="app" v-md-theme="'purple'">
     <navigation></navigation>
     <router-view></router-view>
   </div>

@@ -1,27 +1,6 @@
 <template>
 
   <div class="">
-    <md-toolbar v-md-theme="'orange'">
-      <md-button class="md-icon-button">
-        <md-icon>menu</md-icon>
-      </md-button>
-
-      <h2 class="md-title" style="flex: 1">Vue Material</h2>
-
-      <router-link v-if="!isLoggedIn" to="/login">
-        <md-button>Login</md-button>
-      </router-link>
-
-      <router-link to="/">
-        <md-button class="Default">Home</md-button>
-      </router-link>
-
-      <router-link v-if="isLoggedIn" to="/logout">
-        <!-- click on Log out triggers isLoggedIn = fale in store  -->
-        <md-button @click="logout" >Log out</md-button>
-      </router-link>
-
-    </md-toolbar>
 
     <router-link v-if="isLoggedIn" to="/logout">
       <!-- click on Log out triggers isLoggedIn = fale in store  -->

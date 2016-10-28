@@ -1,17 +1,6 @@
 <template>
   <div class="ComponentList">
 
-    <md-list class="md-double-line">
-      <md-list-item v-for="component in components">
-        <!-- <md-icon class="md-primary">phone</md-icon> -->
-
-        <div class="md-list-text-container">
-          <span>{{component.title}}</span>
-          <span>{{component.description}}</span>
-        </div>
-
-      </md-list-item>
-    </md-list>
   </div>
 </template>
 
