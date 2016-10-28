@@ -12,7 +12,7 @@ export const app = feathers()
   .configure(hooks())
   .configure(authentication({ storage: window.localStorage }))
 
-socket.on('reconnect', () => { app.authenticate() })
+socket.on('reconnect', () => { console.log('moooua') })
 
 
 export const assessmentService = app.service('assessments')

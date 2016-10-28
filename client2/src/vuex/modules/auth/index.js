@@ -6,8 +6,11 @@ import {
   LOGOUT_USER
 } from './mutation-types'
 
+// check Boolean of jwt in localStorage
+// const authState = !!window.localStorage.getItem('feathers-jwt')
+
 const state = {
-  isLoggedIn: null
+  isLoggedIn: !!window.localStorage.getItem('feathers-jwt')
 }
 
 const mutations = {

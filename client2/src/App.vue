@@ -1,6 +1,5 @@
 <template>
   <div class="app" id="app" v-md-theme="'default'">
-    <img src="./assets/logo.png">
     <navigation></navigation>
     <router-view></router-view>
   </div>
@@ -31,8 +30,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  width: 50%;
   margin: auto;
-  padding: 10px;
+  /*padding: 10px;*/
 }
 </style>

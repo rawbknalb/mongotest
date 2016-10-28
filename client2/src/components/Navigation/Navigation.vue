@@ -1,10 +1,27 @@
 <template>
+
   <div class="">
-    <h1 class="header">I'm a vue.js component</h1>
+    <md-toolbar>
+      <md-button class="md-icon-button">
+        <md-icon>menu</md-icon>
+      </md-button>
+
+      <h2 class="md-title" style="flex: 1">Vue Material</h2>
+
+      <router-link v-if="!isLoggedIn" to="/login">
+        <md-button>Login</md-button>
+      </router-link>
+
+      <router-link v-if="isLoggedIn" to="/logout">
+        <!-- click on Log out triggers isLoggedIn = fale in store  -->
+        <md-button @click="logout" >Log out</md-button>
+      </router-link>
+
+    </md-toolbar>
 
     <router-link v-if="isLoggedIn" to="/logout">
       <!-- click on Log out triggers isLoggedIn = fale in store  -->
-      <div @click="logoutUser" class="column">Log out</div>
+      <div @click="logout" class="column">Log out</div>
     </router-link>
 
     <router-link v-if="!isLoggedIn" to="/login">
@@ -31,6 +48,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import * as services from '../../services'
 
 export default {
   name: 'Navigation',
@@ -38,7 +56,15 @@ export default {
     isLoggedIn: 'getAuthState'
   }),
   methods: {
-    ...mapActions(['logoutUser'])
+    ...mapActions(['logoutUser']),
+
+    logout () {
+      services.app.logout().then(this.logoutUser).then(this.redirectAfterlogout)
+    },
+
+    redirectAfterlogout () {
+      this.$router.replace(this.$route.query.redirect || '/login')
+    }
   }
 }
 </script>
